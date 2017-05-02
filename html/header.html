@@ -1,0 +1,54 @@
+<html>
+
+<head>
+
+    <style>
+    <?php include 'html/Styles/HeaderStyle.css'; ?>
+
+    </style>
+    <div class="container">
+        <img src="http://localhost/its362/projectSample/html/Images/pizza-party-header-image.jpg" alt="Power House Pizza Banner" width="100%" height="150" id="banner" title="Power House Pizza">
+        <div class="topnav" id="myTopnav">
+
+            <?php
+            $pages = array(
+                  'Home' => 'index.php',
+                  'Menu' => 'menu.php',
+                  
+            );
+            
+            foreach ($pages as $k => $v)  {
+                   echo '<a href="' . $v . '">' . $k . '</a>';
+            }
+if(isset($_SESSION['loggedin'])){
+        
+        //Set the My accounts page
+        echo '<a href="cart.php"> Cart </a>';
+        
+        
+        echo '<a id="loginform" href="orderhistory.php">  Welcome Back!  <u>';
+        
+        //Set the Welcome bar at the top
+       //ucwords makes it camel case
+        echo ucwords($_SESSION['S_firstname']);
+        echo '</u> |  My Account ';
+        echo '<a/>';
+        
+        
+       
+        }
+        else
+        {
+        
+        echo '<a href="register.php">Register</a>';
+        //echo "something here";
+        require ('login_form.inc.php');
+        
+       // echo '<a href="contact.php">LOGGIN</a>';
+        //echo '<a href="contact.php">Login</a>';
+}
+         ?>
+        </div>
+</head>
+
+<body>
